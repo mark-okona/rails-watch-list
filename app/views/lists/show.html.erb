@@ -1,4 +1,32 @@
-<h2><%= @list.name %></h2>
-<p><%= link_to "Create a new list", new_list_path %></p>
-<p><%= link_to "Create a new bookmark", new_list_bookmark_path(@list) %></p>
-<p><%= link_to "Return to lists", root_path %></p>
+<h1><%= @list.name %></h1>
+
+<div class="continer">
+  <div class="row">
+    <%@list.bookmarks.each do |bookmark| %>
+      <div class="col-3">
+        <div class="card">
+          <img src="<%=bookmark.movie.poster_url%>">
+          <p class="comment"><%= bookmark.comment %></p>
+          <p class="title"><%= bookmark.movie.title %></p>
+          <p><%= bookmark.movie.overview %></p>
+          <p>Rating: <%= bookmark.movie.rating.to_s %></p>
+          <button><%= link_to "Delete Bookmark", bookmark_path(bookmark), class: "button-text",
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<div class="row justify-content-md-center" id="buttons>
+  <div class="col 1">
+    <button><%= link_to "Create a new bookmark", new_list_bookmark_path(@list), class: "button-text" %></button>
+  </div>
+  <div class="col 1">
+    <button><%= link_to "Return to lists", root_path, class: "button-text" %></button>
+  </div>
+</div>
+<%# <<%= link_to "Delete Bookmark",
+  bookmark_path(@list.bookmark),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>

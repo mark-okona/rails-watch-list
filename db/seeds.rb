@@ -18,7 +18,7 @@ serialized_movie_list = URI.open(filepath).read
 movie_list = JSON.parse(serialized_movie_list)
 
 movie_list['results'].each do |movie|
-  Movie.create(title: movie['original_title'], overview: movie['overview'], poster_url: movie['poster_path'], rating: movie['vote_average'])
+  Movie.create(title: movie['original_title'], overview: movie['overview'], poster_url: "https://image.tmdb.org/t/p/original/#{movie['poster_path']}", rating: movie['vote_average'])
 end
 
 list_name_array = ["Crime", "Good", "Bad", "Tense", "Chill", "Criterion", "Mubi", "New" ]

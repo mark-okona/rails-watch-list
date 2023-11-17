@@ -1,7 +1,11 @@
-<h1>Lists of Films to Watch</h1>
+<div class="container">
+  <h1>Films to Watch</h1>
 
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list)  %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @lists.each do |list| %>
+      <li><%= link_to list.name, list_path(list), class: "list-item" %></li>
+    <% end %>
+  </ul>
+
+  <button><%= link_to "New List", new_list_path, class: "button-text" %></button>
+</div>

@@ -1,7 +1,16 @@
 <h1>New List</h1>
 
-<%= form_with model: @list do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+<div class="row justify-content-md-center">
+  <div class="col-sm-4 mx-auto">
+    <%= form_with model: @list do |f| %>
+      <%= f.text_field :name %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row justify-content-md-center">
+  <div class="col-sm-1 mx-auto">
+    <button><%= link_to "Lists", root_path, class: "button-text" %></button>
+  </div>
+</div>
